@@ -47,7 +47,7 @@ ion-icon {
 }
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 6rem;
+  scroll-padding-top: 7rem;
 }
 body {
   background: var(--white);
