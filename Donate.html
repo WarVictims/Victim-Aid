@@ -44,6 +44,7 @@
 
     .amount-options {
       display: flex;
+      flex-direction: row;
       flex-wrap: wrap;
       gap: 12px;
       justify-content: center;
@@ -111,26 +112,76 @@
       background-color: #0056b3;
     }
 
-    .testimonial {
-      margin-top: 40px;
-      font-size: 14px;
-      padding: 20px;
-      background: #e6f0ff;
-      border-left: 4px solid #004080;
-      border-radius: 10px;
-    }
+    .testimonial-carousel {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  background-color: #f8faff;
+  padding: 40px 0;
+}
 
-    .testimonial p {
-      font-style: italic;
-      margin-bottom: 10px;
-    }
+.testimonial-track {
+  display: flex;
+  animation: scrollTestimonials 60s linear infinite;
+  width: max-content;
+}
 
-    .testimonial span {
-      display: block;
-      text-align: right;
-      color: #004080;
-      font-weight: 600;
-    }
+.testimonial-carousel:hover .testimonial-track {
+  animation-play-state: paused;
+}
+
+.testimonial {
+  flex: 0 0 300px;
+  margin: 0 20px;
+  font-size: 14px;
+  padding: 20px;
+  background: #e6f0ff;
+  border-left: 4px solid #004080;
+  border-radius: 10px;
+  min-height: 120px;
+  opacity: 0.7;
+  transition: opacity 0.5s ease;
+}
+
+.testimonial:hover {
+  opacity: 1;
+}
+
+.testimonial p {
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.testimonial span {
+  display: block;
+  text-align: right;
+  color: #004080;
+  font-weight: 600;
+}
+
+@keyframes scrollTestimonials {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Responsive: stack vertically on mobile */
+@media (max-width: 768px) {
+  .testimonial-track {
+    animation: none;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .testimonial {
+    margin: 20px auto;
+    max-width: 90%;
+  }
+}
+
 
     @media (max-width: 600px) {
       .amount-options {
@@ -146,7 +197,7 @@
     <h1>Donate to Save Lives</h1>
     <p class="subtext">Every dollar you give brings us closer to reuniting families and supporting survivors.</p>
 
-    <form action="https://formspree.io/f/your-form-id" method="POST">
+    <form >
       
       <div class="amount-options">
         <button type="button" onclick="selectAmount(500)">$500</button>
@@ -179,10 +230,27 @@
 
     </form>
 
-    <div class="testimonial">
-      <p>“Thanks to your support, I was reunited with my family after months apart. I will never forget the kindness.”</p>
-      <span>– Mariam, Ukraine</span>
+    <div class="testimonial-carousel">
+      <div class="testimonial-track">
+        <!-- Original Testimonials -->
+        <div class="testimonial"><p>“Thanks to your support, I was reunited with my family after months apart. I will never forget the kindness.”</p><span>– Mariam, Ukraine</span></div>
+        <div class="testimonial"><p>“The food and shelter saved our lives during the worst winter of the war. We are deeply grateful.”</p><span>– Omar, Syria</span></div>
+        <div class="testimonial"><p>“I lost everything in the bombing, but the aid helped me rebuild my home and my hope.”</p><span>– Amina, Gaza</span></div>
+        <div class="testimonial"><p>“Your volunteers held my hand when I felt alone. That gesture meant the world to me.”</p><span>– Fatima, Sudan</span></div>
+        <div class="testimonial"><p>“My children can go to school again, thanks to your educational support.”</p><span>– Hassan, Yemen</span></div>
+        <div class="testimonial"><p>“The mental health care you gave me changed my life after the trauma I faced.”</p><span>– Laila, Afghanistan</span></div>
+    
+        <!-- Duplicates for seamless loop -->
+        <div class="testimonial"><p>“Thanks to your support, I was reunited with my family after months apart. I will never forget the kindness.”</p><span>– Mariam, Ukraine</span></div>
+        <div class="testimonial"><p>“The food and shelter saved our lives during the worst winter of the war. We are deeply grateful.”</p><span>– Omar, Syria</span></div>
+        <div class="testimonial"><p>“I lost everything in the bombing, but the aid helped me rebuild my home and my hope.”</p><span>– Amina, Gaza</span></div>
+        <div class="testimonial"><p>“Your volunteers held my hand when I felt alone. That gesture meant the world to me.”</p><span>– Fatima, Sudan</span></div>
+        <div class="testimonial"><p>“My children can go to school again, thanks to your educational support.”</p><span>– Hassan, Yemen</span></div>
+        <div class="testimonial"><p>“The mental health care you gave me changed my life after the trauma I faced.”</p><span>– Laila, Afghanistan</span></div>
+      </div>
     </div>
+    
+    
   </div>
 
   <script>
