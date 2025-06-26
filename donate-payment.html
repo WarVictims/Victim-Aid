@@ -176,6 +176,9 @@
   </style>
 </head>
 <body>
+      <div id="preloader">
+      <div class="loader"></div>
+    </div>
 
 <div class="container">
   <h1>Confirm Your Donation</h1>
@@ -239,7 +242,9 @@
 </div>
 
 <script>
-
+  window.addEventListener('load', function () {
+    document.body.classList.add('loaded');
+  });
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("payment");
 
