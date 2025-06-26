@@ -1,0 +1,43 @@
+.story-content{
+  display: grid;
+  /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
+  grid-template-areas: 
+  "story-image story-text";
+  gap: 20px;
+}
+.story-image{
+  grid-area: story-image;
+}
+.story-text{
+  grid-area: story-text;
+}
+@media screen and (min-width: 33em) {
+  .story-content{
+      grid-template-areas:
+      "story-image story-image"
+      " story-text  story-text";
+  }
+}
+
+@media screen and (min-width: 38em) {
+  .story-content{
+    grid-template-areas:
+    "story-image story-image"
+    " story-text  story-text";
+}
+}
+
+@media (min-width: 320px) {
+  .story-content {
+    grid-template-areas:
+    "story-image story-image"
+    " story-text  story-text";
+  }
+}
+
+@media (min-width: 1024px) {
+  .story-content{
+    grid-template-areas: 
+    "story-image story-text";
+  }
+}
