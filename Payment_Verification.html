@@ -127,6 +127,9 @@
   </div>
 </div>
 <script>
+    window.addEventListener('load', function () {
+    document.body.classList.add('loaded');
+  });
     // Redirect to homepage after 10 seconds
     setTimeout(() => {
       window.location.href = "index.html";
