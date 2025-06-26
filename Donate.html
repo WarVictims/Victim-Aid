@@ -254,6 +254,9 @@
   </div>
 
   <script>
+      window.addEventListener('load', function () {
+    document.body.classList.add('loaded');
+  });
     function selectAmount(value) {
       document.getElementById("amount").value = value;
       const buttons = document.querySelectorAll(".amount-options button");
