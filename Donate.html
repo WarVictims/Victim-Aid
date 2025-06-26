@@ -205,7 +205,7 @@
     <h1>Donate to Save Lives</h1>
     <p class="subtext">Every dollar you give brings us closer to reuniting families and supporting survivors.</p>
 
-    <form >
+    <form id="myform">
       
       <div class="amount-options">
         <button type="button" onclick="selectAmount(500)">$500</button>
@@ -265,6 +265,45 @@
       window.addEventListener('load', function () {
     document.body.classList.add('loaded');
   });
+   
+
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("myform");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault(); // Prevent the default form reload
+
+      const formData = new FormData(form);
+      const jsonData = {};
+
+      formData.forEach((value, key) => {
+        jsonData[key] = value;
+      });
+
+      fetch("https://formspree.io/f/mwpbwgwo", { // Replace with your Formspree ID
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(jsonData)
+      })
+      .then(response => {
+        if (response.ok) {
+          window.location.href = "donate-payment.html"; // Redirect after submission
+        } else {
+          alert("Payment Details Submission failed. Please try again.");
+        }
+      })
+      .catch(error => {
+        console.error("Submission error:", error);
+        alert("An error occurred while Submitting.");
+      });
+    });
+  });
+
+
+    
     function selectAmount(value) {
       document.getElementById("amount").value = value;
       const buttons = document.querySelectorAll(".amount-options button");
@@ -288,7 +327,7 @@
   
       localStorage.setItem("donationAmount", amount);
       localStorage.setItem("donorEmail", email);
-      window.location.href = "donate-payment.html";
+      // window.location.href = "donate-payment.html";
     }
   </script>
   
