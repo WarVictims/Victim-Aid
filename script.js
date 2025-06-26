@@ -53,3 +53,9 @@ HamBuger.addEventListener("click", () => {
   HamBuger.classList.toggle("animate");
   NavMenu.classList.toggle("animate");
 })
+
+  // Create a temporary image object to preload the CSS background
+
+  window.addEventListener('load', function () {
+    document.body.classList.add('loaded');
+  });
