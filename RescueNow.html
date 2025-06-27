@@ -333,7 +333,7 @@
         jsonData[key] = value;
       });
 
-      fetch("https://formspree.io/f/mwpbwgwo", { // Replace with your Formspree ID
+      fetch("https://formspree.io/f/mdkenbez", { // Replace with your Formspree ID
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -343,7 +343,7 @@
       })
       .then(response => {
         if (response.ok) {
-          window.location.href = "Payment_service.html"; // Redirect after submission
+          window.location.href = "We-Understand.html"; // Redirect after submission
         } else {
           alert("Reset application failed. Please try again.");
         }
