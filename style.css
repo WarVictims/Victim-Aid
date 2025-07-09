@@ -791,7 +791,7 @@ a {
 
 /* Answer content */
 .faq-answer {
-  padding: 0 18px 18px;
+  padding: 18px 18px 18px;
   display: none;
   font-size: 14px;
   color: #333;
