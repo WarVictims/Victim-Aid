@@ -464,6 +464,26 @@ a {
 .projects .support:hover {
   background: linear-gradient(90deg, #ffc107, #ff9800);
 }
+.banner .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  text-align: center;
+  color: #112B55;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.banner img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+
 .wps .container {
   display: flex;
   justify-content: center;
