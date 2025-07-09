@@ -482,7 +482,9 @@ a {
   border-radius: 8px;
   object-fit: cover;
 }
-
+.fa-telegram{
+  font-size: 2rem;
+}
 
 .wps .container {
   display: flex;
