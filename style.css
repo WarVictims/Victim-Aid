@@ -689,8 +689,16 @@ a {
 }
 
 /* === Contact Section === */
-.footer-contact p {
+.footer-contact a {
+  display: block;
   margin-bottom: 8px;
+  color: #cfd9e0;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-contact a:hover {
+  color: #ffffff;
 }
 
 /* === Social Icons === */
@@ -707,10 +715,18 @@ a {
   transform: scale(1.1);
 }
 
+/* === Powered By Section === */
+.footer-powered {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 14px;
+  color: #9baec8;
+}
+
 /* === Bottom Section === */
 .footer-bottom {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 10px;
   font-size: 14px;
   color: #9baec8;
   border-top: 1px solid #3e5c76;
@@ -725,7 +741,6 @@ a {
     gap: 10px;
   }
 }
-
 
 
 
