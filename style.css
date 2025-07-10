@@ -464,6 +464,62 @@ a {
 .projects .support:hover {
   background: linear-gradient(90deg, #ffc107, #ff9800);
 }
+
+.powered-by .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  text-align: center;
+  color: #112B55;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.powered-by h2 {
+  font-size: clamp(2rem, 2.5vw, 3.5rem);
+  margin-bottom: 40px;
+  color: #004080;
+  font-weight: 700;
+  text-align: center;
+}
+
+.powered-by .logos {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.powered-by .logos img {
+  /* background: white; */
+  padding: 20px;
+  border-radius: 16px;
+  /* box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); */
+  max-width: 520px;
+  max-height: 420px;
+  width: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.powered-by .logos img:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+  .powered-by .logos {
+    gap: 20px;
+  }
+
+  .powered-by .logos img {
+    max-width: 160px;
+    padding: 16px;
+  }
+}
+
 .banner .container {
   max-width: 1200px;
   margin: 0 auto;
