@@ -733,13 +733,42 @@ a {
   padding-top: 20px;
 }
 
+
 /* === Responsive === */
-@media (max-width: 768px) {
+@media (max-width:600px) {
   .footer-container {
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
   }
+}
+
+
+.footer-powered {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 14px;
+  color: #9baec8;
+}
+
+.partner-logos {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.partner-logos img {
+  max-height: 80px;
+  object-fit: cover;
+  /* max-width: 80px; */
+  /* filter: brightness(0) invert(1); Makes logos white for dark background */
+  transition: transform 0.3s ease;
+}
+
+.partner-logos img:hover {
+  transform: scale(1.05);
 }
 
 
