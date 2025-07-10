@@ -225,13 +225,42 @@ body.loaded #preloader {
   padding-top: 20px;
 }
 
+
 /* === Responsive === */
-@media (max-width: 768px) {
+@media (max-width:600px) {
   .footer-container {
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
   }
+}
+
+
+.footer-powered {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 14px;
+  color: #9baec8;
+}
+
+.partner-logos {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.partner-logos img {
+  max-height: 80px;
+  object-fit: cover;
+  /* max-width: 80px; */
+  /* filter: brightness(0) invert(1); Makes logos white for dark background */
+  transition: transform 0.3s ease;
+}
+
+.partner-logos img:hover {
+  transform: scale(1.05);
 }
     .how-it-works {
   padding: 60px 20px;
@@ -374,51 +403,62 @@ body.loaded #preloader {
     </div>
   </section>
 
- <footer class="site-footer">
-    <div class="footer-container">
+  <footer class="site-footer">
+      <div class="footer-container">
         <div class="footer-about">
-            <h3>About Us</h3>
-            <p>
-                We support war victims through community programs, relief efforts,
-                and advocacy. Join us in making a difference.
-            </p>
+          <h3>About Us</h3>
+          <p>
+            We support war victims through community programs, relief efforts,
+            and advocacy. Join us in making a difference.
+          </p>
         </div>
 
         <div class="footer-links">
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="About.html">About</a></li>
-                <li><a href="index.html#projects">Our Projects</a></li>
-                <li><a href="Donate.html">Donate Now</a></li>
-                <li><a href="index.html#wps">Testimonials</a></li>
-                <li><a href="RescueNow.html">Rescue Loved One's</a></li>
-                <li><a href="FAQs.html">FAQs</a></li>
-            </ul>
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="index.html#projects">Our Projects</a></li>
+            <li><a href="Donate.html">Donate Now</a></li>
+            <li><a href="index.html#wps">Testimonials</a></li>
+            <li><a href="RescueNow.html">Rescue Loved One's</a></li>
+            <li><a href="FAQs.html">FAQs</a></li>
+          </ul>
         </div>
 
-      <div class="footer-contact">
-            <h3>Contact</h3>
-            <a href="mailto:warvictims237@gmail.com">Email: warvictims237@gmail.com</a><br>
-          
-            <div class="footer-social">
-                <a href="https://t.me/warvictimschat" target="_blank"><i class="fab fa-telegram"></i></a>
-                 <a href="https://wa.me/17722241492" target="_blank">
-  <i class="fab fa-whatsapp"></i>
-</a>
-               <!-- <a href="#"><i class="fab fa-instagram"></i></a> -->
-            </div>
+        <div class="footer-contact">
+          <h3>Contact</h3>
+          <a href="mailto:warvictims237@gmail.com"
+            >Email: warvictims237@gmail.com</a
+          ><br />
+          <!-- <a href="tel:+17722241492">Phone: +1 (772) 224‑1492</a> -->
+          <div class="footer-social">
+            <a href="https://t.me/warvictimschat" target="_blank"
+              ><i class="fab fa-telegram"></i
+            ></a>
+            <a href="https://wa.me/17722241492" target="_blank">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
         </div>
-    </div>
+      </div>
 
-    <div class="footer-powered">
-        <p>Powered by Bill and Melinda Gates Foundation, European Union Foundations, and GlobalGiving.</p>
-    </div>
+      <div class="footer-powered">
+        <p>Powered by:</p>
+        <div class="partner-logos">
+          <img
+            src="gates-foundation-logo.jpg"
+            alt="Bill and Melinda Gates Foundation"
+          />
+          <img src="eu-logo.jpg" alt="European Union" class="eu-logo"/>
+          <img src="globalgiving-logo.jpg" alt="GlobalGiving" />
+        </div>
+      </div>
 
-    <div class="footer-bottom">
+      <div class="footer-bottom">
         <p>&copy; 2025 War Victims Support. All rights reserved.</p>
-    </div>
-</footer>
+      </div>
+    </footer>
 <script>
     window.addEventListener('load', function () {
     document.body.classList.add('loaded');
