@@ -482,7 +482,7 @@ a {
   border-radius: 8px;
   object-fit: cover;
 }
-.fa-telegram{
+.fa-telegram,.fa-whatsapp{
   font-size: 2rem;
 }
 
